@@ -6,4 +6,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBackground">#2d327c</color>
     <color name="colorYellow">#ecdb20</color>
+    <color name="colorTeamName">#000000</color>
+    <color name="colorDate">#0003bc</color>
 </resources>
