@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/GameDateTextView"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/detail_horizontal_margin"
+        android:layout_marginRight="@dimen/detail_horizontal_margin"
+        android:layout_marginTop="@dimen/detail_vertical_margin"
+        android:textSize="@dimen/five"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/GameLocationTextView"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/detail_horizontal_margin"
+        android:layout_marginRight="@dimen/detail_horizontal_margin"
+        android:textSize="@dimen/five"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_vertical_margin"
+        android:layout_gravity="center_horizontal">
+
+        <FrameLayout
+            android:layout_width="@dimen/IconSize"
+            android:layout_height="@dimen/IconSize"
+            android:layout_marginLeft="@dimen/detail_horizontal_margin">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/AwayIcon"
+                android:layout_gravity="center_vertical"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="@dimen/detail_horizontal_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/AwayTeam"
+                android:textSize="@dimen/five"
+                android:layout_gravity="start"
+                android:textColor="@color/colorTeamName"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/AwayMascot"
+                android:textSize="@dimen/Mascot"
+                android:layout_gravity="start"
+                android:textColor="@color/colorTeamName"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/AwayRecord"
+                android:textSize="@dimen/five"
+                android:layout_gravity="start"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/detail_horizontal_margin"
+            android:layout_marginRight="@dimen/detail_horizontal_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Score"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/Score"
+                android:textColor="@color/colorTeamName"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Time"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="@dimen/detail_horizontal_margin">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/HomeTeam"
+                android:textSize="@dimen/five"
+                android:layout_gravity="end"
+                android:textColor="@color/colorTeamName"
+                android:textAlignment="viewEnd"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/HomeMascot"
+                android:textSize="@dimen/Mascot"
+                android:layout_gravity="end"
+                android:textColor="@color/colorTeamName"
+                android:textAlignment="viewEnd"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/HomeRecord"
+                android:textSize="@dimen/five"
+                android:layout_gravity="end"
+                android:textAlignment="viewEnd"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_marginRight="@dimen/detail_horizontal_margin"
+            android:layout_width="@dimen/IconSize"
+            android:layout_height="@dimen/IconSize"
+            android:layout_gravity="end">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/HomeIcon"
+                android:layout_gravity="center_vertical"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:text="Camera"
+        android:layout_width="wrap_content"
+        android:id="@+id/CameraButton"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/detail_horizontal_margin"
+        android:layout_marginBottom="@dimen/detail_vertical_margin"
+        android:layout_gravity="right"
+        android:layout_marginTop="@dimen/separation"/>
+
+</LinearLayout>
