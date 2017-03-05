@@ -24,6 +24,58 @@ public class Team {
         ShortDate = Info[12];
     }
 
+    public void setLongDate(String arg) {
+        LongDate = arg;
+    }
+
+    public void setLocation(String arg) {
+        Location = arg;
+    }
+
+    public void setAwayIcon(String arg) {
+        AwayIcon = arg;
+    }
+
+    public void setAwayTeam(String arg) {
+         AwayTeam = arg;
+    }
+
+    public void setAwayMascot(String arg) {
+         AwayMascot = arg;
+    }
+
+    public void setAwayRecord(String arg) {
+         AwayRecord = arg;
+    }
+
+    public void setHomeIcon(String arg) {
+         HomeIcon = arg;
+    }
+
+    public void setHomeTeam(String arg) {
+         HomeTeam = arg;
+    }
+
+    public void setHomeMascot(String arg) {
+         HomeMascot = arg;
+    }
+
+    public void setHomeRecord(String arg) {
+         HomeRecord = arg;
+    }
+
+    public void setScore(String arg) {
+         Score = arg;
+    }
+
+    public void setTime(String arg) {
+         Time = arg;
+    }
+
+    public void setShortDate(String arg) {
+         ShortDate = arg;
+    }
+
     public String getLongDate() {
         return LongDate;
     }
