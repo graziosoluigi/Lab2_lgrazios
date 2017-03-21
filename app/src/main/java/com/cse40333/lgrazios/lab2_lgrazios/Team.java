@@ -1,5 +1,9 @@
 package com.cse40333.lgrazios.lab2_lgrazios;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 /**
  * Created by Luigi on 2/16/17.
  */
@@ -126,5 +130,18 @@ public class Team {
 
     public String getShortDate() {
         return ShortDate;
+    }
+
+    public String getGameString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        sb.append(this.AwayTeam + ", ");
+        sb.append(this.AwayMascot + " vs ");
+        sb.append(this.HomeTeam + ", ");
+        sb.append(this.HomeMascot + " on ");
+        sb.append(this.ShortDate + " at ");
+        sb.append(this.Location);
+        sb.append(")");
+        return sb.toString();
     }
 }

@@ -18,7 +18,7 @@ import java.util.List;
 
 class ScheduleAdapter extends ArrayAdapter<Team> {
     ScheduleAdapter (Context context, ArrayList<Team> schedule) {
-        super(context, R.layout.schedule_item, (ArrayList<Team>) schedule);
+        super(context, R.layout.schedule_item, schedule);
     }
     public View getView (int position, View convertView, ViewGroup parent) {
         LayoutInflater scheduleInflater = LayoutInflater.from(getContext());

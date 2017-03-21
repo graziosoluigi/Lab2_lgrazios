@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#313131</color>
+    <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorBackground">#2d327c</color>
-    <color name="colorYellow">#ecdb20</color>
-    <color name="colorTeamName">#000000</color>
-    <color name="colorDate">#0003bc</color>
+    <color name="colorAccent">#aaaaaa</color>
+    <color name="colorAccent21">#2140ff</color>
+
+    <color name="textColor">#262626</color>
+    <color name="textColorPrimary">#ffffff</color>
+    <color name="textColorSecondary">#000000</color>
+
+    <color name="windowBackground">#ffffff</color>
+
+    <color name="colorControlHighlight">#ff1245</color>
+    <color name="colorControlNormal">#aaa</color>
+    <color name="colorControlActivated">#0aaaaa</color>
+    <color name="colorButtonNormal">#dd1235</color>
+    <color name="colorButtonNormal21">#115eff</color>
 </resources>

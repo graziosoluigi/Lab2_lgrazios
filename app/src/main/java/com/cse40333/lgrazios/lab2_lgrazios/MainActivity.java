@@ -1,19 +1,27 @@
 package com.cse40333.lgrazios.lab2_lgrazios;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<Team> teamInfo = new ArrayList<Team>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +50,16 @@ public class MainActivity extends AppCompatActivity {
     public void getView() throws IOException {
         setContentView(R.layout.activity_main);
 
+        // Initialize toolbar
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("ND Athletics");
+
         String[][] s = new String[][]{};
 
         MyCsvFileReader myCsvFileReader = new MyCsvFileReader(getApplicationContext());
 
-        final ArrayList<Team> teamInfo = myCsvFileReader.readCsvFile("schedule.txt");
+        teamInfo = myCsvFileReader.readCsvFile("schedule.txt");
 
         ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this, teamInfo);
 
@@ -71,5 +84,62 @@ public class MainActivity extends AppCompatActivity {
 
 
         schedulelistView.setOnItemClickListener (clickListener);
+    }
+
+    String gameSchedule() {
+        StringBuilder sb = new StringBuilder();
+        for (Team team : teamInfo) {
+            sb.append(team.getGameString() + "\n");
+        }
+        return sb.toString();
+    }
+
+    public boolean onCreateOptionsMenu (Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int res_id = item.getItemId();
+
+        if (res_id == R.id.share) {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(android.content.Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "BasketBall Matches");
+            shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, gameSchedule());
+            startActivity(Intent.createChooser(shareIntent, "Share via"));
+        }
+
+        else if (res_id == R.id.sync) {
+            final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+            Snackbar snackbar = Snackbar.make(coordinatorLayout, "Sync is not yet implemented", Snackbar.LENGTH_LONG);
+            // get snackbar view
+            View snackbarView = snackbar.getView();
+            TextView tv1 = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+            tv1.setTextColor(Color.WHITE);
+
+            snackbar.setAction("Try Again", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Snackbar snackbar2 = Snackbar.make(coordinatorLayout, "Wait for the next few labs. Thank you for your patience", Snackbar.LENGTH_LONG);
+                    View snackbarView2 = snackbar2.getView();
+                    TextView tv2 = (TextView) snackbarView2.findViewById(android.support.design.R.id.snackbar_text);
+                    tv2.setTextColor(Color.WHITE);
+                    snackbar2.show();
+                }
+            });
+            snackbar.show();
+        }
+
+        else if (res_id == R.id.settings) {
+            View v = findViewById(R.id.scheduleListView);
+            registerForContextMenu(v);
+            openContextMenu(v);
+            unregisterForContextMenu(v);
+        }
+        return true;
     }
 }

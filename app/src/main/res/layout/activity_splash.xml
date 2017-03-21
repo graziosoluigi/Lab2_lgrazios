@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorBackground"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.cse40333.lgrazios.lab2_lgrazios.MainActivity">
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="19pt"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/textColorPrimary"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -27,7 +27,7 @@
         android:text="Basketball 2017"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorYellow"
+        android:textColor="@color/textColorSecondary"
         android:textSize="10pt"
         android:id="@+id/textView3"
         android:layout_below="@+id/textView"

@@ -57,7 +57,7 @@
                 android:id="@+id/AwayTeam"
                 android:textSize="@dimen/five"
                 android:layout_gravity="start"
-                android:textColor="@color/colorTeamName"/>
+                android:textColor="@color/textColor"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                 android:id="@+id/AwayMascot"
                 android:textSize="@dimen/Mascot"
                 android:layout_gravity="start"
-                android:textColor="@color/colorTeamName"/>
+                android:textColor="@color/textColor"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                 android:id="@+id/Score"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/Score"
-                android:textColor="@color/colorTeamName"/>
+                android:textColor="@color/textColor"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -112,7 +112,7 @@
                 android:id="@+id/HomeTeam"
                 android:textSize="@dimen/five"
                 android:layout_gravity="end"
-                android:textColor="@color/colorTeamName"
+                android:textColor="@color/textColor"
                 android:textAlignment="viewEnd"/>
 
             <TextView
@@ -121,7 +121,7 @@
                 android:id="@+id/HomeMascot"
                 android:textSize="@dimen/Mascot"
                 android:layout_gravity="end"
-                android:textColor="@color/colorTeamName"
+                android:textColor="@color/textColor"
                 android:textAlignment="viewEnd"/>
 
             <TextView
