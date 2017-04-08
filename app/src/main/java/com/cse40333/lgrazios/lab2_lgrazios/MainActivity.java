@@ -22,10 +22,25 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Team> teamInfo = new ArrayList<Team>();
+    DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        dbHelper = new DatabaseHelper(getApplicationContext());
+        dbHelper.onUpgrade(dbHelper.getWritableDatabase(), 0, 1);
+
+        MyCsvFileReader myCsvFileReader = new MyCsvFileReader(getApplicationContext());
+
+        teamInfo.clear();
+        teamInfo = myCsvFileReader.readCsvFile("schedule.txt");
+
+
+        for (Team tmp : teamInfo) {
+            dbHelper.insertData(tmp);
+            //everything is successfully inserted!
+        }
 
         try {
             getView();
@@ -55,11 +70,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("ND Athletics");
 
-        String[][] s = new String[][]{};
-
-        MyCsvFileReader myCsvFileReader = new MyCsvFileReader(getApplicationContext());
-
-        teamInfo = myCsvFileReader.readCsvFile("schedule.txt");
+        teamInfo.clear();
+        teamInfo = dbHelper.returnTeams();
 
         ScheduleAdapter scheduleAdapter = new ScheduleAdapter(this, teamInfo);
 
@@ -75,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 // you click on Florida State, you should see details of the match between Florida State
                 // and Notre Dame
                 DetailActivity detailActivity = new DetailActivity();
-                View  detailActivityView = detailActivity.getView(getBaseContext(), teamInfo.get(position), parent);
+                View  detailActivityView = detailActivity.getView(getBaseContext(), dbHelper.returnTeams().get(position), parent);
                 setContentView(detailActivityView);
             }
 
@@ -88,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     String gameSchedule() {
         StringBuilder sb = new StringBuilder();
-        for (Team team : teamInfo) {
+        for (Team team : dbHelper.returnTeams()) {
             sb.append(team.getGameString() + "\n");
         }
         return sb.toString();
