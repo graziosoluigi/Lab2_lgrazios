@@ -164,7 +164,7 @@
             android:layout_height="200dp" />
 
         <Button
-            android:text="Camera"
+            android:text="Gallery"
             android:layout_width="wrap_content"
             android:id="@+id/CameraButton"
             android:layout_height="wrap_content"

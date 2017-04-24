@@ -38,6 +38,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TIME = "time";
     private static final String SHORT_DATE = "s_date";
 
+    public static String IMAGES_NAME = "images";
+    public static String IMAGE_COL_ID = "_id";
+    public static String IMAGE_TEAM_COL_ID = "image_team_id";
+    public static String IMAGE_SRC = "image_src";
+    public static String IMAGE_URI = "image_uri";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -62,6 +68,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + SHORT_DATE + " TEXT )";
         database.execSQL(T_DATABASE_CREATE);
 
+        database.execSQL("CREATE TABLE " + IMAGES_NAME + " ("
+                + IMAGE_COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + IMAGE_TEAM_COL_ID + " TEXT, "
+                + IMAGE_SRC + " BLOB, "
+                + IMAGE_URI + " TEXT"
+                + ");");
+
     }
 
     // Method is called during an upgrade of the database,
@@ -70,6 +83,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Drop older table if existed
         database.execSQL("DROP TABLE IF EXISTS " + TEAMS_NAME);
+
+        database.execSQL("DROP TABLE IF EXISTS " + IMAGES_NAME);
 
         //create tables again
         onCreate(database);
@@ -97,7 +112,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         long ret = database.insert(TEAMS_NAME, null, contentValues);
 
-        if (ret > -1) {
+        if (ret > 0) {
+            System.out.println("successfully inserted");
+        } else {
+            System.out.println("insert unsuccessful");
+        }
+
+        database.close();
+    }
+
+    public void insertDataImages(String tableName, ContentValues contentValues) {
+        SQLiteDatabase database = getWritableDatabase();
+
+        long ret = database.insert(IMAGES_NAME, null, contentValues);
+
+        if (ret > 0) {
             System.out.println("successfully inserted");
         } else {
             System.out.println("insert unsuccessful");
@@ -149,5 +178,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
         return games;
+    }
+
+    public Cursor getSelectEntries(String tablename, String[] columns, String where, String[] args) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(tablename, columns, where, args, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    public long get_id(String team_name){
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TEAMS_NAME +
+                " WHERE " + AWAY_TEAM + "=" + "'" + team_name + "'", null);
+
+        long team_id = 0;
+
+        if (cursor != null ) {
+            if  (cursor.moveToFirst()) {
+                do {
+                    team_id = (cursor.getLong(cursor.getColumnIndex(TEAM_COL_ID)));
+                }while (cursor.moveToNext());
+            }
+        }
+
+        cursor.close();
+
+        return team_id;
     }
 }

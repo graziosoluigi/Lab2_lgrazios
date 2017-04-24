@@ -86,9 +86,20 @@ public class MainActivity extends AppCompatActivity {
                 //Write code here to open the activity that will show details of the game event,i.e. if
                 // you click on Florida State, you should see details of the match between Florida State
                 // and Notre Dame
-                DetailActivity detailActivity = new DetailActivity();
-                View  detailActivityView = detailActivity.getView(getBaseContext(), dbHelper.returnTeams().get(position), parent);
-                setContentView(detailActivityView);
+
+                /*
+
+                Intent gallery_activity_intent = new Intent(getApplicationContext(), GalleryActivity.class);
+
+                long team_id = dbHelper.get_id(GameInfo.getAwayTeam());
+                gallery_activity_intent.putExtra("id", team_id);
+
+                startActivity(gallery_activity_intent);
+                 */
+                Intent detail_actitvity_intent = new Intent(getApplicationContext(), DetailActivity.class);
+                detail_actitvity_intent.putExtra("id", position);
+
+                startActivity(detail_actitvity_intent);
             }
 
         };
@@ -98,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         schedulelistView.setOnItemClickListener (clickListener);
     }
 
-    String gameSchedule() {
+    public String gameSchedule() {
         StringBuilder sb = new StringBuilder();
         for (Team team : dbHelper.returnTeams()) {
             sb.append(team.getGameString() + "\n");

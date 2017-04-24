@@ -22,7 +22,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" android:theme="@style/AppMaterialTheme"></activity>
+        <activity android:name=".DetailActivity" android:theme="@style/AppMaterialTheme"></activity>
+        <activity android:name=".GalleryActivity" android:theme="@style/AppMaterialTheme"></activity>
+
+    <provider
+        android:name="android.support.v4.content.FileProvider"
+        android:authorities="com.cse40333.lgrazios.lab2_lgrazios.fileprovider"
+        android:grantUriPermissions="true"
+        android:exported="false">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/filepaths" />
+    </provider>
 
     </application>
 
